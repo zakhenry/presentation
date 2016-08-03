@@ -1,0 +1,15 @@
+#ignore all
+/*
+
+!/docker/**
+!/common/**
+!/browser/**
+!/server/**
+!/index.*
+
+# root docs
+#!/README.md
+#!/CHANGELOG.md
+
+# root config
+!/.env.example

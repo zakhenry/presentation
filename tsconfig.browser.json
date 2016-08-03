@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "sourceRoot": "src",
+    "outDir": "dist/browser",
+    "skipLibCheck": true,
+    "types": [
+      "jasmine",
+      "chance"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "lib",
+    "dist",
+    "src/server"
+  ]
+}

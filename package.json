@@ -1,0 +1,57 @@
+{
+  "name": "ubiquits-presentation",
+  "author": "Zak Henry <zak@ubiquits.com>",
+  "license": "MIT",
+  "version": "0.0.0",
+  "description": "Presentation of the Ubiquits framework",
+  "homepage": "https://github.com/ubiquits/quickstart#readme",
+  "main": "index.js",
+  "dependencies": {
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.4",
+    "@angular/http": "2.0.0-rc.4",
+    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "@angular/router": "3.0.0-beta.2",
+    "@angular/router-deprecated": "2.0.0-rc.2",
+    "@angular/upgrade": "2.0.0-rc.4",
+    "@types/chalk": "^0.4.28",
+    "@types/chance": "^0.7.28",
+    "@types/dotenv": "^2.0.17",
+    "@types/jasmine": "^2.2.29",
+    "@types/lodash": "0.0.27",
+    "@types/moment": "^2.11.28",
+    "@types/node": "^4.0.29",
+    "@types/proxyquire": "^1.3.26",
+    "@types/socket.io": "^1.4.26",
+    "@types/validator": "^4.5.26",
+    "@ubiquits/core": "^0.8.9",
+    "chalk": "^1.1.3",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "lodash": "^4.12.0",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "5.0.0-beta.6",
+    "zone.js": "^0.6.12"
+  },
+  "devDependencies": {
+    "@ubiquits/toolchain": "^0.3.2"
+  },
+  "scripts": {
+    "start": "u",
+    "test": "u test -s",
+    "coveralls": "u coveralls",
+    "build": "u build",
+    "preparepublish": "cp -r lib/* .",
+    "postpublish": "u changelog && u doc build && u deploy docs"
+  },
+  "keywords": [
+    "ubiquits",
+    "presentation"
+  ],
+  "bugs": {
+    "url": "https://github.com/ubiquits/quickstart/issues"
+  },
+  "licence": "MIT"
+}
