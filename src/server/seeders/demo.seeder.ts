@@ -1,10 +1,10 @@
-import { UserStore } from '../../common/stores/user.store';
+import { SlideStore } from '../../common/stores/slide.store';
 import { Logger, Seeder } from '@ubiquits/core/common';
 import { AbstractSeeder } from '@ubiquits/core/server';
 import { Injectable } from '@angular/core';
-import { User } from '../../common/models/user.model';
-import { UserMockStore } from '../../common/stores/user.mock.store';
-import { UserDatabaseStore } from '../stores/user.db.store';
+import { Slide } from '../../common/models/slide.model';
+import { SlideMockStore } from '../../common/stores/slide.mock.store';
+import { SlideDatabaseStore } from '../stores/slide.db.store';
 import { NotFoundException } from '@ubiquits/core/common';
 
 @Injectable()
@@ -13,15 +13,15 @@ export class DemoSeeder extends AbstractSeeder {
 
   protected logger: Logger;
 
-  constructor(loggerBase: Logger, protected userStore: UserStore, protected userMockStore: UserMockStore) {
+  constructor(loggerBase: Logger, protected slideStore: SlideStore, protected slideMockStore: SlideMockStore) {
     super(loggerBase);
   }
 
   public seed(): Promise<void> {
     this.logger.info('Seeding database');
-    return this.userStore.initialized()
-      .then(() => this.userStore.findOne(process.env.DEMO_ID))
-      .then((instance: User) => {
+    return this.slideStore.initialized()
+      .then(() => this.slideStore.findOne(process.env.DEMO_ID))
+      .then((instance: Slide) => {
 
         this.logger.debug('Demo model already seeded');
       })
@@ -33,15 +33,15 @@ export class DemoSeeder extends AbstractSeeder {
         
         this.logger.debug('Creating demo models');
 
-        return this.userMockStore.findOne()
-          .then((mockModel: User) => {
+        return this.slideMockStore.findOne()
+          .then((mockModel: Slide) => {
 
             let mockModels = [mockModel];
 
-            return this.userMockStore.findOne(process.env.DEMO_ID)
-              .then((user: User) => {
-                mockModels.push(user);
-                return (this.userStore as UserDatabaseStore).getRepository()
+            return this.slideMockStore.findOne(1)
+              .then((slide: Slide) => {
+                mockModels.push(slide);
+                return (this.slideStore as SlideDatabaseStore).getRepository()
                   .then((repo: any) => repo.persistMany(...mockModels));
               });
 

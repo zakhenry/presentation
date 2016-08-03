@@ -1,6 +1,6 @@
 import { inject, addProviders } from '@angular/core/testing';
-import { UserStore } from '../../common/stores/user.store';
-import { UserMockStore } from '../../common/stores/user.mock.store';
+import { SlideStore } from '../../common/stores/slide.store';
+import { SlideMockStore } from '../../common/stores/slide.mock.store';
 import { ConsoleLogger, Logger } from '@ubiquits/core/common';
 import { PresentationComponent } from './presentation.component';
 
@@ -9,8 +9,8 @@ describe('App', () => {
   beforeEach(() => {
     addProviders([
       PresentationComponent,
-      UserMockStore,
-      {provide: UserStore, useClass: UserMockStore},
+      SlideMockStore,
+      {provide: SlideStore, useClass: SlideMockStore},
       {provide: Logger, useClass: ConsoleLogger},
     ]);
   });

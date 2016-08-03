@@ -6,7 +6,7 @@ import { RouterOutlet } from '@angular/router';
   selector: 'presentation',
   template: require('./presentation.component.html'),
   // styles: [require('./presentation.component.css')],
-  directives: [RouterOutlet]
+  directives: [RouterOutlet],
 })
 export class PresentationComponent implements OnInit {
 

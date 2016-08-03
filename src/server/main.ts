@@ -7,9 +7,9 @@ import {
   BootstrapResponse
 } from '@ubiquits/core/server';
 import { Logger, ConsoleLogger } from '@ubiquits/core/common';
-import { UserDatabaseStore } from './stores/user.db.store';
-import { UserStore } from '../common/stores/user.store';
-import { UserMockStore } from '../common/stores/user.mock.store';
+import { SlideDatabaseStore } from './stores/slide.db.store';
+import { SlideStore } from '../common/stores/slide.store';
+import { SlideMockStore } from '../common/stores/slide.mock.store';
 import { Injector } from '@angular/core';
 import * as seeders from './seeders';
 import * as models from '../common/models';
@@ -33,7 +33,7 @@ let loadClasses = [
  */
 let providers: ProviderDefinition[] = [
   Injector,
-  UserMockStore,
+  SlideMockStore,
   {provide: Logger, useClass: ConsoleLogger},
   // provide(Server, {useClass: HapiServer}), //override
 ];
@@ -41,7 +41,7 @@ let providers: ProviderDefinition[] = [
 /**
  * One difference from the frontend - providers can be promises, and they defer the bootstrapping
  * until they are resolved. In this example, we check if the database connection is alive, and if
- * not, substitute the UserStore with the UserMockStore. If up, we use the UserDatabaseStore.
+ * not, substitute the SlideStore with the SlideMockStore. If up, we use the SlideDatabaseStore.
  * This is a good technique for frontend development where you still want server interaction, but
  * just want to use mock values
  */
@@ -49,14 +49,14 @@ let storesPromise = Database.connect(deferredLog)
   .then(() => {
     deferredLog('debug', 'database is up, using database stores');
     return [
-      {provide: UserStore, useClass: UserDatabaseStore},
+      {provide: SlideStore, useClass: SlideDatabaseStore},
     ];
   })
   .catch(() => {
     deferredLog('warning', 'database could not connect, using mock stores');
     return [
       {provide: Database, useClass: DatabaseMock},
-      {provide: UserStore, useClass: UserMockStore},
+      {provide: SlideStore, useClass: SlideMockStore},
     ]
   });
 

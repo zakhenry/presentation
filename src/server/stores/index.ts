@@ -1,1 +1,1 @@
-export * from './user.db.store';
+export * from './slide.db.store';

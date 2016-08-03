@@ -1,0 +1,10 @@
+<h1>Slides Component</h1>
+<div (swipeLeft)="handleTransition($event)" (swipeRight)="handleTransition($event)">
+    <slide *ngFor="let slide of (slideCollection$ | async)" [data]="slide"></slide>
+
+    <h3>Info:</h3>
+    <p> There are {{slideCount$ | async}} slides</p>
+
+</div>
+
+<controls (transition)="handleTransition($event)"></controls>
