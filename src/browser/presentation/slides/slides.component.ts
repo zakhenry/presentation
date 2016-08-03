@@ -24,13 +24,15 @@ export class SlidesComponent implements OnInit {
 
   public slideCount$: Observable<number>;
 
+  public currentSlideId: number;
+
   constructor(loggerBase: Logger,
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private store: SlideStore) {
     this.logger = loggerBase.source('SlideComponent');
 
-    this.slideCollection$ = Observable.fromPromise(store.findMany())
+    this.slideCollection$ = Observable.fromPromise(store.findMany());
     this.slides$          = this.slideCollection$.flatMap(c => Observable.from(c));
 
     this.slideCount$ = this.slides$.count();
@@ -41,6 +43,7 @@ export class SlidesComponent implements OnInit {
 
     this.activatedRoute.params.subscribe((params: any) => {
       this.logger.info('route param', params);
+      this.currentSlideId = +params['id'];
     });
 
     this.activatedRoute.url.subscribe((url: UrlPathWithParams[]) => {

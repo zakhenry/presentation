@@ -1,3 +1,4 @@
 <h1>Presenter Component</h1>
 
-<p>Here will go the presenter's controls and info</p>
+<slide *ngFor="let slide of (slideCollection$ | async)" [data]="slide"></slide>
+

@@ -1,3 +1,7 @@
-<h3>{{slide.title}}</h3>
-<p>{{slide.content}}</p>
-<hr>
+<small>{{slide.slideId}}</small>
+<div *ngIf="active">
+    <hr>
+    <h3>{{slide.title}}</h3>
+    <p>{{slide.content}}</p>
+    <hr>
+</div>

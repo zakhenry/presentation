@@ -1,6 +1,6 @@
 <h1>Slides Component</h1>
 <div (swipeLeft)="handleTransition($event)" (swipeRight)="handleTransition($event)">
-    <slide *ngFor="let slide of (slideCollection$ | async)" [data]="slide"></slide>
+    <slide *ngFor="let slide of (slideCollection$ | async);trackBy:slide?.slideId" [data]="slide" [active]="slide.slideId == currentSlideId"></slide>
 
     <h3>Info:</h3>
     <p> There are {{slideCount$ | async}} slides</p>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import '../public/css/styles.css';
 import { Logger } from '@ubiquits/core/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'presentation',
   template: require('./presentation.component.html'),
@@ -10,15 +10,20 @@ import { RouterOutlet } from '@angular/router';
 })
 export class PresentationComponent implements OnInit {
 
-  protected logger:Logger;
+  protected logger: Logger;
 
-  constructor(loggerBase:Logger) {
+  constructor(loggerBase: Logger, protected router: Router, protected activatedRoute:ActivatedRoute) {
     this.logger = loggerBase.source('PresentationComponent')
   }
 
-  public ngOnInit(){
+  public ngOnInit() {
     this.logger.debug('initialized');
   }
 
+  public togglePresenter(): void {
+    this.logger.info(this.activatedRoute.snapshot);
+
+    this.router.navigateByUrl('(presenter:slides/1)');
+  }
 
 }

@@ -13,6 +13,7 @@ export class SlideComponent implements OnInit {
   protected logger: Logger;
 
   @Input('data') public slide: Slide;
+  @Input() public active: boolean;
 
   constructor(loggerBase: Logger, private route: ActivatedRoute) {
     this.logger = loggerBase.source('SlideComponent')
@@ -20,6 +21,9 @@ export class SlideComponent implements OnInit {
 
   public ngOnInit() {
     this.logger.debug('initialized');
+    if (typeof this.active == 'undefined'){
+      this.active = true;
+    }
   }
 
 }
